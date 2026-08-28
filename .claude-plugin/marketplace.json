@@ -1,0 +1,14 @@
+{
+  "name": "atolye",
+  "owner": {
+    "name": "Atölye",
+    "email": "erdinc@iftrue.co"
+  },
+  "plugins": [
+    {
+      "name": "corpus",
+      "source": "./plugins/corpus",
+      "description": "Company knowledge service: /using-corpus grounds any content you draft (emails, job postings, proposals) in the corpus document archive via MCP."
+    }
+  ]
+}

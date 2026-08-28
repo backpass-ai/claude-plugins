@@ -1,0 +1,9 @@
+{
+  "name": "corpus",
+  "version": "0.1.0",
+  "description": "Connects the corpus knowledge service (MCP) and provides /using-corpus for drafting company content grounded in the document archive.",
+  "author": {
+    "name": "Atölye",
+    "email": "erdinc@iftrue.co"
+  }
+}
