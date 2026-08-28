@@ -1,6 +1,6 @@
 ---
 name: using-corpus
-description: Use when drafting company-facing content — emails, job postings, proposal sections, bios, social posts, deck or site copy — or whenever a draft needs company facts such as services, case studies, past projects, clients, people, terminology, or voice. Requires the corpus MCP server connection.
+description: Use when drafting company-facing content — emails, job postings, proposal sections, bios, social posts, deck or site copy — or whenever a draft needs company facts such as services, case studies, past projects, clients, people, terminology, or voice. Requires a corpus connection (MCP server or claude.ai connector).
 ---
 
 # Using Corpus
@@ -14,14 +14,13 @@ sources so the reader can check them.
 
 ## Preflight
 
-If the corpus MCP tools (`mcp__corpus__ask`, `mcp__corpus__search`, …) are not
-available in this session, or calls fail with an auth error: do not draft.
-Tell the user how to connect instead:
+If the corpus tools (`ask`, `search`, `get_document`, …) are not available in
+this session, or calls fail with an auth error: **do not draft.** Read
+`references/connecting.md` and tell the user how to connect.
 
-1. `/plugin install corpus@atolye` (from the Atölye plugin marketplace)
-2. Ask an admin to issue a corpus token (shown once, in the corpus admin UI)
-   and `export CORPUS_MCP_TOKEN="<token>"` in the shell profile
-3. Restart Claude Code and check `/mcp` shows **corpus** connected
+Drafting company facts without corpus is the one failure this skill exists to
+prevent — a plausible-sounding invented client, metric or date is worse than no
+draft at all.
 
 ## Workflow
 
