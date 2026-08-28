@@ -5,9 +5,11 @@ is running.
 
 ## claude.ai (web, desktop, mobile)
 
-1. Settings → Connectors → **Add custom connector**, using the corpus base URL.
-   On Team and Enterprise plans an owner adds it under Organization settings →
-   Connectors, and members connect individually from there.
+1. Settings → Connectors → **Add custom connector**, using the corpus MCP
+   endpoint — the base URL plus `/mcp` (e.g. `https://corpus.example/mcp`),
+   not the bare base URL. On Team and Enterprise plans an owner adds it under
+   Organization settings → Connectors using that same `/mcp` URL, and members
+   connect individually from there.
 2. Click Connect. You will be sent to corpus to sign in with your work Google
    account, then shown a consent screen.
 3. If corpus says access is not enabled, ask an operator to press **Grant** in
