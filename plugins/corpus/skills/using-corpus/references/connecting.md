@@ -12,8 +12,8 @@ is running.
    connect individually from there.
 2. Click Connect. You will be sent to corpus to sign in with your work Google
    account, then shown a consent screen.
-3. If corpus says access is not enabled, ask an operator to press **Grant** in
-   the claude.ai column on the corpus Users page.
+3. If corpus says access is not enabled, ask someone with corpus admin access
+   to grant it in the claude.ai column on the corpus Users page.
 
 ## Claude Code
 
