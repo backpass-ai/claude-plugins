@@ -12,6 +12,19 @@ Corpus is the company's knowledge service: the Google Drive document archive
 company-specific claim in a draft comes from corpus, and the draft carries its
 sources so the reader can check them.
 
+## Invoked with arguments
+
+When invoked as `/using-corpus <task>` (e.g. `/using-corpus write a response
+to that email`), the arguments ARE the drafting task: perform it now with the
+full workflow below, drawing on whatever material is already in the
+conversation (a pasted email, a job description, notes). Invoked with no
+arguments, apply the workflow to whatever drafting is underway.
+
+An explicit invocation is a request for the company's voice, not just its
+facts. Even a deliverable that needs zero company facts — a plain email
+reply, a thank-you note — still gets the voice grounding step before
+drafting.
+
 ## Preflight
 
 If the corpus tools (`ask`, `search`, `get_document`, …) are not available in
@@ -29,11 +42,26 @@ draft at all.
 2. Ground first: call `ask` with 1–3 focused questions — it returns a cited
    answer plus the exact documents consulted. Add targeted tools from the
    table below when you need raw material rather than synthesis.
-3. Draft. Every company-specific fact in the draft traces to a retrieved
+3. Ground the voice:
+   - Call `list_guides`. If there is a `voice` guide — or any guide whose
+     description matches the deliverable (a hiring policy for a job
+     posting, say) — `get_guide` it and follow its rules. Guides are the
+     operator-published documents every company-facing draft must obey;
+     they are not in the search index, so `search` will not find them.
+   - Retrieve 2–3 same-genre exemplars — past client emails for an email,
+     proposal sections for a proposal, site copy for web copy — via `search`
+     then `get_document`. Match their actual register, sentence rhythm,
+     greetings and sign-offs, and terminology; never a generic
+     "professional" tone.
+   - This step is not optional when the deliverable needs no company facts:
+     an email reply with nothing to cite still gets exemplars. If the
+     archive has no writing in the deliverable's genre, use the closest
+     genre it has and say so in one line after the draft.
+4. Draft. Every company-specific fact in the draft traces to a retrieved
    result. A fact corpus does not have becomes a `[TBD: …]` placeholder in
    the draft — salary bands, dates, names, metrics are never filled from
    general knowledge.
-4. Finish with the output contract below.
+5. Finish with the output contract below.
 
 ## Output contract
 
@@ -53,6 +81,7 @@ The response contains, in order:
 | Need | Tool |
 |---|---|
 | Synthesized answer with citations (start here) | `ask` |
+| Voice guide, policies, standing rules (published by operators) | `list_guides`, `get_guide` |
 | Snippets to scan, phrasing to reuse | `search` |
 | Full text when exact wording/voice matters | `get_document` |
 | Company profile facts | `get_company_info` |
@@ -60,9 +89,28 @@ The response contains, in order:
 | Curated public-facing case studies | `list_case_studies` |
 | Team members and roles | `find_people` |
 
+## Proposing a guide revision
+
+`submit_guide` sends a new guide, or a revision of an existing one, to
+corpus as a **pending draft** — nothing is live until an operator reviews
+and publishes it in corpus admin. Use it only when the user explicitly asks
+to update or propose a guide ("submit this as the new voice guide"), never
+as a side effect of drafting: noticing that the voice guide is out of date is
+something to mention, not something to fix on your own. The call fails with
+a permission error unless the user's corpus principal may submit guides;
+report that plainly and stop.
+
 ## Common mistakes
 
 - Drafting from memory and "checking corpus later" — ground before writing.
+- Skipping voice grounding because the deliverable needs no company facts —
+  an explicit `/using-corpus` invocation asks for the company's voice, and
+  that comes from the published voice guide and exemplars, not from a
+  generic register.
+- `search`ing for a style guide — guides live outside the archive; only
+  `list_guides`/`get_guide` return them.
+- Calling `submit_guide` because a draft revealed a gap in a guide — that
+  is the user's call, not the skill's.
 - Using only `search` when `ask` would return a cited synthesis plus the
   document list the Sources section needs.
 - Filling a gap (a metric, a client name, a salary) from general knowledge
