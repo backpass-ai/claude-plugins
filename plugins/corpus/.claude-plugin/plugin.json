@@ -1,6 +1,6 @@
 {
   "name": "corpus",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Connects the corpus knowledge service (MCP) and provides /using-corpus for drafting company content grounded in the document archive, plus /add-guide for turning what a conversation established into a corpus guide.",
   "author": {
     "name": "Atölye",
