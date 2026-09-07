@@ -43,6 +43,16 @@ grant it in the claude.ai column on the corpus Users page.
   /using-corpus write me a draft job posting for our new system designer position
   ```
 
+- `/add-guide <what, and as what>` — turn something the conversation
+  established (a client's communication rules, a policy just agreed) into a
+  corpus guide. It shows the distilled draft, submits it on your yes as a
+  pending draft, and an operator publishes it on the Guides page in corpus
+  admin — as a new guide or merged into an existing one. Example:
+
+  ```
+  /add-guide the Nordwind part of this conversation should be added as "how we communicate with Nordwind from now on"
+  ```
+
 ## Releasing
 
 claude.ai re-syncs the marketplace when a pull request that bumps a plugin's

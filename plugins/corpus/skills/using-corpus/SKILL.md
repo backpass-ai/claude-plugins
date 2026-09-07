@@ -89,16 +89,16 @@ The response contains, in order:
 | Curated public-facing case studies | `list_case_studies` |
 | Team members and roles | `find_people` |
 
-## Proposing a guide revision
+## Proposing a guide
 
-`submit_guide` sends a new guide, or a revision of an existing one, to
-corpus as a **pending draft** — nothing is live until an operator reviews
-and publishes it in corpus admin. Use it only when the user explicitly asks
-to update or propose a guide ("submit this as the new voice guide"), never
-as a side effect of drafting: noticing that the voice guide is out of date is
-something to mention, not something to fix on your own. The call fails with
-a permission error unless the user's corpus principal may submit guides;
-report that plainly and stop.
+When the user asks to turn something into a guide, or to revise one
+("submit this as the new voice guide"), use the add-guide skill: it shows
+the distilled draft for approval and only then calls `submit_guide`, which
+lands a **pending draft** under its own slug — nothing is live until an
+operator publishes it in corpus admin, and the operator decides whether it
+becomes a new guide or joins an existing one. Never submit as a side effect
+of drafting: noticing that the voice guide is out of date is something to
+mention, not something to fix on your own.
 
 ## Common mistakes
 
@@ -111,6 +111,8 @@ report that plainly and stop.
   `list_guides`/`get_guide` return them.
 - Calling `submit_guide` because a draft revealed a gap in a guide — that
   is the user's call, not the skill's.
+- Calling `submit_guide` directly instead of through add-guide — the user
+  never saw the text that was sent.
 - Using only `search` when `ask` would return a cited synthesis plus the
   document list the Sources section needs.
 - Filling a gap (a metric, a client name, a salary) from general knowledge
