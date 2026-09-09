@@ -1,9 +1,17 @@
 {
   "name": "corpus",
-  "version": "0.3.0",
-  "description": "Connects the corpus knowledge service (MCP) and provides /using-corpus for drafting company content grounded in the document archive, plus /add-guide for turning what a conversation established into a corpus guide.",
+  "version": "0.4.0",
+  "description": "Draft company-facing content in the company's voice, grounded in the corpus knowledge service. Sizes each job (light, standard, heavy) and runs brief, outline and review gates for heavy work.",
   "author": {
-    "name": "Atölye",
-    "email": "erdinc@iftrue.co"
-  }
+    "name": "Atölye"
+  },
+  "keywords": [
+    "corpus",
+    "voice",
+    "proposals",
+    "content",
+    "knowledge"
+  ],
+  "skills": "./skills",
+  "mcpServers": "./.mcp.json"
 }

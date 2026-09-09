@@ -1,0 +1,403 @@
+{
+  "skill_name": "using-corpus",
+  "notes": "Prompts run with the full plugin installed and corpus connected to a test tenant. Assertions are checked against the transcript (tool calls and turns), not only the final output. Client names are the test tenant's fixtures.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "light-reply-no-questions",
+      "prompt": "Lena from Nordwind replied (below). She asks if phase 2 can start in October instead of November. Write back: yes, but we need the signed SOW by the 20th.\n\n> Hi Erdinc, thanks for the call yesterday. One thing: could we pull phase 2 forward to October? Our board would like to see it moving before Q4 close. Best, Lena",
+      "expected_output": "A reply email in the company voice, delivered in the first assistant turn after grounding, with a Sources section and an adjustments line. No questions asked.",
+      "files": [],
+      "assertions": [
+        {
+          "text": "Announces the light tier in one line containing the word 'thorough' as the override",
+          "type": "transcript"
+        },
+        {
+          "text": "Zero questions to the user before the draft appears",
+          "type": "transcript"
+        },
+        {
+          "text": "Calls list_guides before drafting",
+          "type": "transcript"
+        },
+        {
+          "text": "Draft is the first content in the delivery turn (no preamble sentence before it)",
+          "type": "output"
+        },
+        {
+          "text": "Sources section present and lists at least the voice guide",
+          "type": "output"
+        },
+        {
+          "text": "Adjustments line present offering 2 to 3 one-word options",
+          "type": "output"
+        },
+        {
+          "text": "Draft mentions the 20th and the SOW",
+          "type": "output"
+        },
+        {
+          "text": "No em-dash characters in the output",
+          "type": "output"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "light-reply-override-up",
+      "prompt": "This reply is important, they're choosing between us and two other firms. Lena at Nordwind asked for our revised approach to phase 2 in writing. Write the reply.",
+      "expected_output": "Tier moves to standard because of 'important'. One question round (at most three, one per turn, options first), then draft.",
+      "files": [],
+      "assertions": [
+        {
+          "text": "Announces standard tier, not light",
+          "type": "transcript"
+        },
+        {
+          "text": "At most one question per assistant turn",
+          "type": "transcript"
+        },
+        {
+          "text": "At most three questions in total before the draft",
+          "type": "transcript"
+        },
+        {
+          "text": "Every question includes the phrase 'draft it'",
+          "type": "transcript"
+        },
+        {
+          "text": "Draft is preceded by a one-line restatement of the answers used",
+          "type": "output"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "standard-post-answers-in-task",
+      "prompt": "LinkedIn post about the Helix migration going live last week. Audience is engineering leaders who might hire us. Goal is for them to book an intro call. Lead with the zero-downtime cutover.",
+      "expected_output": "Standard tier, but audience, goal and angle are all in the task, so the question round is skipped with a one-line note, and the draft follows.",
+      "files": [],
+      "assertions": [
+        {
+          "text": "No question asked before the draft",
+          "type": "transcript"
+        },
+        {
+          "text": "A one-line note states that audience and goal were already given",
+          "type": "transcript"
+        },
+        {
+          "text": "Calls ask or list_case_studies to ground the Helix proof point",
+          "type": "transcript"
+        },
+        {
+          "text": "Every metric in the draft appears in a retrieved corpus document or is a [TBD]",
+          "type": "output"
+        },
+        {
+          "text": "Sources section present",
+          "type": "output"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "standard-question-uses-options",
+      "prompt": "write a linkedin post about the helix launch",
+      "expected_output": "Standard tier. One question on audience or angle, presented as 2 to 4 options with a recommended default and a 'you decide' option, using the platform's options tool if available.",
+      "files": [],
+      "assertions": [
+        {
+          "text": "First question offers between 2 and 4 options plus a 'you decide' option",
+          "type": "transcript"
+        },
+        {
+          "text": "One option is marked recommended",
+          "type": "transcript"
+        },
+        {
+          "text": "Question text contains 'draft it'",
+          "type": "transcript"
+        },
+        {
+          "text": "If ask_user_input_v0 or AskUserQuestion is available, it is used rather than a prose list",
+          "type": "transcript"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "heavy-handoff-to-brief",
+      "prompt": "I have a 20 minute slot at DevOpsDays Berlin in November. Topic is roughly forward-deployed engineering for mid-market companies. Help me build the talk.",
+      "expected_output": "Heavy tier announced with the 'quick' override named. Hands off to the brief skill. Brief asks one question per turn, proposes proof points from corpus, presents sections one at a time, saves the brief, then offers the outline.",
+      "files": [],
+      "assertions": [
+        {
+          "text": "Heavy tier announced in one line containing 'quick'",
+          "type": "transcript"
+        },
+        {
+          "text": "Brief skill announced before the first question",
+          "type": "transcript"
+        },
+        {
+          "text": "Calls ask and list_guides before the first question",
+          "type": "transcript"
+        },
+        {
+          "text": "No assistant turn contains more than one question",
+          "type": "transcript"
+        },
+        {
+          "text": "Proof points question offers options drawn from corpus results, not an open-text request",
+          "type": "transcript"
+        },
+        {
+          "text": "Brief sections presented one per turn with a yes gate",
+          "type": "transcript"
+        },
+        {
+          "text": "No sentence of the talk itself is drafted during the brief",
+          "type": "transcript"
+        },
+        {
+          "text": "Brief saved to briefs/ and the path reported",
+          "type": "transcript"
+        },
+        {
+          "text": "Final turn offers 'outline' and 'draft it' as the two next steps",
+          "type": "transcript"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "heavy-override-down",
+      "prompt": "quick rough draft of the Nordwind case study, don't ask me questions, i'll fix it after",
+      "expected_output": "Case study is heavy by type but 'quick' and 'don't ask' move it to standard, and 'don't ask' suppresses the question round. Grounds, drafts, delivers with [TBD]s where corpus lacks facts.",
+      "files": [],
+      "assertions": [
+        {
+          "text": "Standard tier announced (not heavy, not light)",
+          "type": "transcript"
+        },
+        {
+          "text": "No question asked before the draft",
+          "type": "transcript"
+        },
+        {
+          "text": "Calls get_project or ask for Nordwind before drafting",
+          "type": "transcript"
+        },
+        {
+          "text": "Draft contains [TBD] placeholders for any metric not in retrieved documents",
+          "type": "output"
+        },
+        {
+          "text": "Needs your input section present if and only if the draft has a [TBD]",
+          "type": "output"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "tbd-not-invented",
+      "prompt": "Reply to the Helix procurement email and confirm our day rate and the notice period from the MSA.\n\n> Hi, for our vendor file could you confirm the agreed day rate and notice period? Thanks, Priya",
+      "expected_output": "Light tier. Corpus test tenant has the MSA but not the day rate. Draft includes the notice period from the MSA and a [TBD: day rate] placeholder. No number invented.",
+      "files": [],
+      "assertions": [
+        {
+          "text": "Calls search or ask for the Helix MSA",
+          "type": "transcript"
+        },
+        {
+          "text": "Draft contains '[TBD' for the day rate",
+          "type": "output"
+        },
+        {
+          "text": "Draft contains no currency amount",
+          "type": "output"
+        },
+        {
+          "text": "Needs your input has exactly one bullet, about the day rate",
+          "type": "output"
+        },
+        {
+          "text": "Sources lists the MSA document",
+          "type": "output"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "no-corpus-refuses",
+      "prompt": "write a linkedin post about the helix launch",
+      "expected_output": "Run with the corpus connector disabled. The skill does not draft. It explains the connector is missing and points to the connecting reference.",
+      "files": [],
+      "setup": "corpus connector disabled for this run",
+      "assertions": [
+        {
+          "text": "No draft produced",
+          "type": "output"
+        },
+        {
+          "text": "Mentions connecting corpus and names at least one concrete step from connecting.md",
+          "type": "output"
+        },
+        {
+          "text": "Does not call any non-corpus tool to substitute for corpus (no web search)",
+          "type": "transcript"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "outline-refuses-without-brief",
+      "prompt": "/outline the Helix proposal",
+      "expected_output": "Fresh session, no brief on disk or in the conversation. Outline skill stops and points to /brief. Does not build a structure from the bare task.",
+      "files": [],
+      "assertions": [
+        {
+          "text": "No outline block produced",
+          "type": "output"
+        },
+        {
+          "text": "Response names /brief as the first step",
+          "type": "output"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "outline-from-brief",
+      "prompt": "Outline the keynote from the brief at briefs/2026-09-08-devopsdays-berlin-keynote.md",
+      "expected_output": "Reads the brief, retrieves same-genre exemplars, produces one outline block with budgets in minutes summing to 20, a Sources line per section, every brief proof point placed, key message location named, and one yes gate.",
+      "files": [
+        "briefs/2026-09-08-devopsdays-berlin-keynote.md"
+      ],
+      "assertions": [
+        {
+          "text": "Calls search and get_document for at least one past talk or article",
+          "type": "transcript"
+        },
+        {
+          "text": "Outline block names the exemplar it follows",
+          "type": "output"
+        },
+        {
+          "text": "Section budgets are in minutes and sum to 20 (tolerance 1)",
+          "type": "output"
+        },
+        {
+          "text": "Every section has a Sources line or a 'framing' note",
+          "type": "output"
+        },
+        {
+          "text": "Every proof point listed in the brief appears in exactly one section",
+          "type": "output"
+        },
+        {
+          "text": "'Key message lands in' line present",
+          "type": "output"
+        },
+        {
+          "text": "No section contains a sentence longer than the purpose line (no drafted content)",
+          "type": "output"
+        },
+        {
+          "text": "Ends with a section-by-section vs whole-piece question",
+          "type": "transcript"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "review-findings-then-stop",
+      "prompt": "Review the keynote draft in drafts/devopsdays-keynote.md against the brief and outline.",
+      "expected_output": "Runs all four checks, produces the findings block with severities, evidence and one-line fixes, and stops without editing. The fixture draft contains one unsourced metric (blocking), the key message paraphrased not verbatim (blocking), and two terminology slips (minor).",
+      "files": [
+        "drafts/devopsdays-keynote.md",
+        "briefs/2026-09-08-devopsdays-berlin-keynote.md",
+        "briefs/2026-09-08-devopsdays-berlin-keynote-outline.md"
+      ],
+      "assertions": [
+        {
+          "text": "Calls get_guide for the voice guide",
+          "type": "transcript"
+        },
+        {
+          "text": "Calls get_document for at least one document listed in the draft's Sources",
+          "type": "transcript"
+        },
+        {
+          "text": "Status line reads 'Not ready'",
+          "type": "output"
+        },
+        {
+          "text": "The unsourced metric is reported as blocking with a section location",
+          "type": "output"
+        },
+        {
+          "text": "The paraphrased key message is reported as blocking",
+          "type": "output"
+        },
+        {
+          "text": "Both terminology slips reported as minor with the guide rule cited",
+          "type": "output"
+        },
+        {
+          "text": "No edit to the draft in this turn",
+          "type": "transcript"
+        },
+        {
+          "text": "Ends by asking which findings to fix, with 'ship it' as an option",
+          "type": "output"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "review-applies-only-picked",
+      "prompt": "fix B1 and m2 only",
+      "expected_output": "Continuation of eval 11. Applies exactly those two fixes, shows before/after per finding id, re-runs only the touched checks, reports the new status line.",
+      "files": [],
+      "continues": 11,
+      "assertions": [
+        {
+          "text": "Exactly two before/after pairs shown, labelled B1 and m2",
+          "type": "output"
+        },
+        {
+          "text": "B2 and m1 remain unchanged in the draft",
+          "type": "output"
+        },
+        {
+          "text": "New status line present, e.g. 'Now: Not ready (1 blocking, 0 major, 1 minor)'",
+          "type": "output"
+        },
+        {
+          "text": "get_guide is not called again (voice check not re-run for a provenance fix)",
+          "type": "transcript"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "add-guide-not-side-effect",
+      "prompt": "Write a Slack message telling the team we now sign every proposal as Atölye GmbH, not Atolye Inc.",
+      "expected_output": "Light tier Slack message. The skill notices this is a standing rule and mentions in one line that it could be added as a guide via /add-guide, but does not call submit_guide.",
+      "files": [],
+      "assertions": [
+        {
+          "text": "submit_guide is never called",
+          "type": "transcript"
+        },
+        {
+          "text": "One line after the draft offers /add-guide",
+          "type": "output"
+        }
+      ]
+    }
+  ]
+}

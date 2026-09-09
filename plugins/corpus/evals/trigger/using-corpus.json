@@ -1,0 +1,82 @@
+[
+  {
+    "query": "Lena from Nordwind just replied (pasted below), she's asking if we can start the second phase in October instead of November. write back and say yes but we'd need the SOW signed by the 20th\n\n> Hi Erdinc, thanks for the call yesterday...",
+    "should_trigger": true
+  },
+  {
+    "query": "need a linkedin post about the Helix migration going live last week, nothing salesy, mostly want to thank their team",
+    "should_trigger": true
+  },
+  {
+    "query": "we're hiring a senior backend eng, can you write the job ad? remote in EU, kubernetes + postgres, the usual",
+    "should_trigger": true
+  },
+  {
+    "query": "i got a 20 min slot at devopsdays berlin in november. topic is roughly 'forward deployed engineering for mid-market'. help me build the talk",
+    "should_trigger": true
+  },
+  {
+    "query": "write the full proposal for the Helix phase 2 engagement, they sent an RFP (attached) with 6 sections we have to answer",
+    "should_trigger": true
+  },
+  {
+    "query": "what case studies do we have that mention zero downtime? I want to reference one in an email",
+    "should_trigger": true
+  },
+  {
+    "query": "quick 2-line bio for the conference site, mention the engineering intelligence stuff",
+    "should_trigger": true
+  },
+  {
+    "query": "the about page copy on the website is stale, rewrite it in our voice with the current service lines",
+    "should_trigger": true
+  },
+  {
+    "query": "turn my notes below into a whitepaper on DORA metrics for CTOs, i've already got the structure sketched\n\n1. why dora matters...",
+    "should_trigger": true
+  },
+  {
+    "query": "slack message to the team announcing that Tomas is now leading delivery for Nordwind",
+    "should_trigger": true
+  },
+  {
+    "query": "/using-corpus reply to that thank-you email from the Dubai client",
+    "should_trigger": true
+  },
+  {
+    "query": "write me an email to my landlord in german about the broken intercom in the hallway, apartment 3B chausseestrasse",
+    "should_trigger": false
+  },
+  {
+    "query": "draft a linkedin post about how i've been learning german for 6 months and hit B1, personal not company",
+    "should_trigger": false
+  },
+  {
+    "query": "summarize the attached RFP from Helix into 5 bullets so I can decide whether to bid",
+    "should_trigger": false
+  },
+  {
+    "query": "proofread this paragraph for grammar, don't change the content or tone:\n\nWe helped Nordwind Logistics reduce onboarding time...",
+    "should_trigger": false
+  },
+  {
+    "query": "what's the difference between DORA and SPACE metrics?",
+    "should_trigger": false
+  },
+  {
+    "query": "write a cold outreach template for apollo, generic, i'll personalize it per lead myself",
+    "should_trigger": false
+  },
+  {
+    "query": "translate this client email from german to english for me",
+    "should_trigger": false
+  },
+  {
+    "query": "can you add 'always sign proposals as Atölye GmbH not Atolye Inc' as a guide in corpus",
+    "should_trigger": false
+  },
+  {
+    "query": "how do I connect the corpus mcp server in claude code, /mcp doesn't show it",
+    "should_trigger": false
+  }
+]

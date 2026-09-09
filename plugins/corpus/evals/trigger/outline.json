@@ -1,0 +1,42 @@
+[
+  {
+    "query": "brief's approved, what's the structure for the keynote?",
+    "should_trigger": true
+  },
+  {
+    "query": "/outline briefs/2026-09-08-helix-case-study.md",
+    "should_trigger": true
+  },
+  {
+    "query": "ok yes to the brief. now sections and how long each one should be",
+    "should_trigger": true
+  },
+  {
+    "query": "outline the whitepaper from the brief we just saved, i want to see the section list before you write",
+    "should_trigger": true
+  },
+  {
+    "query": "which corpus docs feed each section of the proposal? show me the structure",
+    "should_trigger": true
+  },
+  {
+    "query": "outline a blog post about kubernetes cost optimization, general audience, not company stuff",
+    "should_trigger": false
+  },
+  {
+    "query": "we haven't done a brief yet but just give me a rough outline of the proposal so i can see the shape",
+    "should_trigger": false
+  },
+  {
+    "query": "write section 2 of the outline we approved",
+    "should_trigger": false
+  },
+  {
+    "query": "reply to the client, they asked for an outline of our onboarding process",
+    "should_trigger": false
+  },
+  {
+    "query": "make a table of contents for this pdf",
+    "should_trigger": false
+  }
+]
