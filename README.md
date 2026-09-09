@@ -43,6 +43,17 @@ grant it in the claude.ai column on the corpus Users page.
   /using-corpus write me a draft job posting for our new system designer position
   ```
 
+  Short pieces are drafted directly. Heavy pieces (articles, keynotes,
+  decks, whitepapers, full proposals, case studies, landing pages) are
+  routed through three gates, each also available on its own:
+
+  - `/brief` — agree audience, key message, desired action, proof points
+    and tone before drafting.
+  - `/outline` — agree sections, budgets and which corpus documents feed
+    each one.
+  - `/review` — check a draft against its brief, outline, the voice guide
+    and corpus fact provenance; report findings by severity.
+
 - `/add-guide <what, and as what>` — turn something the conversation
   established (a client's communication rules, a policy just agreed) into a
   corpus guide. It shows the distilled draft, submits it on your yes as a

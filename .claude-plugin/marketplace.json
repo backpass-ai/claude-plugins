@@ -8,7 +8,7 @@
     {
       "name": "corpus",
       "source": "./plugins/corpus",
-      "description": "Company knowledge service: /using-corpus grounds any content you draft (emails, job postings, proposals) in the corpus document archive via MCP; /add-guide turns what a conversation established into a corpus guide."
+      "description": "Company knowledge service: /using-corpus drafts company-facing content (emails, job postings, proposals, articles, decks) in the company voice, grounded in the corpus archive via MCP. Heavy pieces go through /brief, /outline and /review; /add-guide turns what a conversation established into a corpus guide."
     }
   ]
 }

@@ -1,0 +1,50 @@
+[
+  {
+    "query": "i got a 20 min slot at devopsdays berlin in november. topic is roughly 'forward deployed engineering for mid-market'. help me build the talk",
+    "should_trigger": true
+  },
+  {
+    "query": "before you write anything, let's figure out what the Helix case study should actually say. i'm not sure what the angle is",
+    "should_trigger": true
+  },
+  {
+    "query": "/brief landing page for the new workflow automation offering",
+    "should_trigger": true
+  },
+  {
+    "query": "we need a whitepaper for the VC audience about engineering due diligence. big piece, let's plan it properly",
+    "should_trigger": true
+  },
+  {
+    "query": "what's the angle for the keynote? i keep going back and forth between 'metrics are dead' and 'metrics done right'",
+    "should_trigger": true
+  },
+  {
+    "query": "full proposal for the Dubai design consultancy, this one's important, take your time",
+    "should_trigger": true
+  },
+  {
+    "query": "reply to Lena at Nordwind, she wants to move the kickoff to the 14th, say that works",
+    "should_trigger": false
+  },
+  {
+    "query": "quick linkedin post about the Helix launch, just draft it",
+    "should_trigger": false
+  },
+  {
+    "query": "here's the outline for the whitepaper, write section 3",
+    "should_trigger": false
+  },
+  {
+    "query": "review the keynote draft against the brief we agreed on",
+    "should_trigger": false
+  },
+  {
+    "query": "summarize this brief from the client into bullets for the team",
+    "should_trigger": false
+  },
+  {
+    "query": "write a one-line brief description for the Nordwind project in our projects list",
+    "should_trigger": false
+  }
+]

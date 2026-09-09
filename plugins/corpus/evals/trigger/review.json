@@ -1,0 +1,42 @@
+[
+  {
+    "query": "here's the keynote draft, check it against the brief and tell me what's off",
+    "should_trigger": true
+  },
+  {
+    "query": "/review the Helix proposal",
+    "should_trigger": true
+  },
+  {
+    "query": "is this on-voice? feels like i drifted in the last two sections",
+    "should_trigger": true
+  },
+  {
+    "query": "did we actually cover every proof point from the brief in the whitepaper draft?",
+    "should_trigger": true
+  },
+  {
+    "query": "double check every client name and number in this proposal is something we can actually back up before i send it",
+    "should_trigger": true
+  },
+  {
+    "query": "review this pull request for the corpus indexer",
+    "should_trigger": false
+  },
+  {
+    "query": "proofread the keynote for typos and grammar only",
+    "should_trigger": false
+  },
+  {
+    "query": "summarize the reviews we got on G2 last quarter",
+    "should_trigger": false
+  },
+  {
+    "query": "fix the tone in section 3, make it warmer",
+    "should_trigger": false
+  },
+  {
+    "query": "write a review of the Nordwind engagement for our internal retro",
+    "should_trigger": false
+  }
+]
