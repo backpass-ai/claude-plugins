@@ -1,9 +1,10 @@
 # Connecting to corpus
 
-Corpus is reachable from claude.ai (web, desktop, Cowork) and from Claude
-Code. Both sign in the same way: corpus is its own OAuth server, so
-connecting sends you to corpus to sign in with your work Google account and
-approve a consent screen. There is no token to copy.
+Corpus is reachable from claude.ai (web, desktop, Cowork) through the corpus
+gateway, one address for every company. Connecting sends you to the gateway
+to sign in with your work Google account; the gateway looks up your
+company from your email domain and shows a consent screen. There is no
+token to copy. Personal Google accounts are refused.
 
 ## When a skill sends you here
 
@@ -29,14 +30,11 @@ content without corpus, so there is nothing to resume until it is back.
 3. Check the connector is switched on for the conversation: the **+** (or
    sliders) button in the composer lists connectors; corpus must be on
    there, not only installed in Customize.
-4. If corpus says access is not enabled, ask someone with corpus admin
-   access to grant it in the claude.ai column on the corpus Users page.
-
-Without the plugin, the connector can still be added by hand under
-Customize → Connectors → **+** → Add custom connector, using the corpus MCP
-endpoint: the base URL plus `/mcp` (for example `https://corpus.example/mcp`),
-not the bare base URL. A manual connector brings the tools but not the
-skills; install the plugin for those.
+4. If the sign-in page says **corpus is not set up for <your domain>**, your
+   company is not registered with the gateway; ask whoever runs corpus for
+   your company. If a corpus call says **access is not enabled**, you are
+   registered but not yet granted: your first connection created your row
+   on the corpus Access page, and an operator grants you there.
 
 ## Cowork
 
@@ -44,15 +42,6 @@ Cowork uses the same plugin and the same connection. Open the Cowork tab,
 then Customize → Plugins, and install if it is not already listed. If
 corpus works in chat but not in a Cowork task, start a new task after
 connecting; a running task does not pick up a new connector.
-
-## Claude Code
-
-Only if someone uses corpus from the terminal as well; the connection is
-separate from claude.ai.
-
-1. `/plugin marketplace add <Atölye marketplace repository URL>`, then
-   `/plugin install corpus@atolye`.
-2. `/mcp`, pick **corpus**, authenticate in the browser.
 
 ## Verifying the connection
 
@@ -63,14 +52,15 @@ guides (at minimum the `voice` guide). Three outcomes and what they mean:
 |---|---|---|
 | A list of guides | Connected and authorised | Nothing to do |
 | Auth or 401 error | Connector present, sign-in lapsed | Customize → Connectors, open corpus, disconnect and reconnect |
-| "access is not enabled" or 403 | Signed in, not granted | An operator grants access on the corpus Users page (claude.ai column) |
+| "access is not enabled" or 403 | Signed in, not granted | An operator grants access on the corpus Access page (your row appeared there on first connection) |
 | Tool not found | Connector absent or off for this chat | Install the plugin, or enable corpus in the conversation's tools menu |
+| "corpus is not set up for <domain>" | Company not registered with the gateway | Ask whoever operates corpus for your company to register the domain |
 
 ## Common problems
 
-- **Signed in with the wrong Google account.** The consent screen accepts
-  any Google account; corpus only authorises work accounts. Disconnect and
-  reconnect, choosing the work account.
+- **Signed in with the wrong Google account.** The gateway accepts any
+  Google Workspace account and routes by its domain; a personal account is
+  refused. Disconnect and reconnect, choosing the work account.
 - **Connected on the web, missing on mobile or desktop.** The connection
   is per account and should carry over; sign out and back in on the
   device that does not see it.

@@ -2,7 +2,7 @@
   "mcpServers": {
     "corpus": {
       "type": "http",
-      "url": "https://corpus-production-22c2.up.railway.app/mcp"
+      "url": "https://GATEWAY_HOST/mcp"
     }
   }
 }

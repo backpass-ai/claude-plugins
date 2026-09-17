@@ -1,4 +1,4 @@
-# Atölye Claude plugins
+# corpus Claude plugins
 
 Internal plugin marketplace for claude.ai and Claude Code. The same
 `marketplace.json` serves both: claude.ai syncs it from this repository
@@ -17,7 +17,7 @@ Google account and approve the consent screen.
 
 ```
 /plugin marketplace add backpass-ai/claude-plugins
-/plugin install corpus@atolye
+/plugin install corpus@corpus
 ```
 
 Then run `/mcp`, select **corpus** and authenticate — it opens the same Google
@@ -25,16 +25,19 @@ sign-in and consent screen. `/mcp` should now list **corpus** as connected.
 Enable auto-update for the marketplace under `/plugin` → Marketplaces so
 plugin updates arrive on their own.
 
-If corpus says access is not enabled, ask someone with corpus admin access to
-grant it in the claude.ai column on the corpus Users page.
+If the sign-in page says corpus is not set up for your company, your
+company's domain is not registered with the gateway yet. If corpus says
+access is not enabled after connecting, ask your corpus operator to grant
+you on the Access page — your first connection creates your row there.
 
 ## Plugins
 
 ### corpus
 
-- Connects the corpus knowledge service over MCP
-  (`https://corpus-production-22c2.up.railway.app/mcp`), authenticated by
-  OAuth against corpus itself.
+- Connects the corpus knowledge service over MCP through the corpus gateway
+  (`https://GATEWAY_HOST/mcp`). Sign-in is Google, with your work account;
+  the gateway routes you to your company's corpus. Your company must be
+  registered with the gateway first.
 - `/using-corpus <request>` — draft any company-facing content (emails, job
   postings, proposal sections, posts) grounded in the corpus archive instead
   of invented facts. Example:

@@ -21,7 +21,7 @@ Flow for heavy work: `using-corpus` → `brief` → `outline` → `using-corpus`
 ```
 corpus/
 ├── .claude-plugin/plugin.json      plugin manifest
-├── .mcp.json                       corpus MCP server (connector URL)
+├── .mcp.json                       corpus MCP server (gateway URL, shared by every company)
 ├── README.md
 ├── skills/
 │   ├── using-corpus/

@@ -1,7 +1,7 @@
 {
-  "name": "atolye",
+  "name": "corpus",
   "owner": {
-    "name": "Atölye",
+    "name": "corpus",
     "email": "erdinc@iftrue.co"
   },
   "plugins": [
