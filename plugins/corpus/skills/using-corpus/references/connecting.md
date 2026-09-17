@@ -22,7 +22,7 @@ content without corpus, so there is nothing to resume until it is back.
 ## claude.ai (web, desktop, mobile)
 
 1. Install the **corpus** plugin: Customize → Plugins → **+** → Add
-   marketplace, enter the Atölye marketplace repository URL, then Install
+   marketplace, enter the corpus marketplace repository URL, then Install
    on corpus. On Team and Enterprise plans an owner publishes it from
    Organization settings → Plugins, so it may already be there.
 2. Connect the corpus connector the plugin brings along: sign in with
@@ -75,7 +75,7 @@ guides (at minimum the `voice` guide). Three outcomes and what they mean:
 
 ## Getting access granted
 
-Operators manage access in corpus admin on the Users page (people) and the
-Tokens page (service tokens). Submitting guides is a separate permission
-("may submit guides") on the same pages. Ask an operator for the specific
-permission you are missing; the error message names it.
+Operators manage access in corpus admin on the Access page (people and
+service tokens). Submitting guides is a separate permission ("may submit
+guides") on the same page. Ask an operator for the specific permission you
+are missing; the error message names it.
