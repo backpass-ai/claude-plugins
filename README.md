@@ -35,7 +35,7 @@ you on the Access page — your first connection creates your row there.
 ### corpus
 
 - Connects the corpus knowledge service over MCP through the corpus gateway
-  (`https://GATEWAY_HOST/mcp`). Sign-in is Google, with your work account;
+  (`https://auth.meetcorpus.com/mcp`). Sign-in is Google, with your work account;
   the gateway routes you to your company's corpus. Your company must be
   registered with the gateway first.
 - `/using-corpus <request>` — draft any company-facing content (emails, job

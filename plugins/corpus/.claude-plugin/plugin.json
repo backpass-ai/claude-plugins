@@ -1,6 +1,6 @@
 {
   "name": "corpus",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Draft company-facing content in the company's voice, grounded in the corpus knowledge service. Sizes each job (light, standard, heavy) and runs brief, outline and review gates for heavy work.",
   "author": {
     "name": "Atölye"
